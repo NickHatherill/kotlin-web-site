@@ -62,6 +62,16 @@ println(customer.placeOrder())
 ```
 </div>
 
+If you get a java.lang.ClassNotFoundException when attempting to build/run your project then you need to specify the java source code location in the build.gradle.kts file.
+
+Example:
+```
+configure<SourceSetContainer> {
+    named("main") {   
+        java.srcDir("src/main/kotlin")      
+    }    
+}
+```
 
 ## Adding Kotlin source code to an existing Java project
 Adding a Kotlin file to an existing Java project is pretty much the same process.
