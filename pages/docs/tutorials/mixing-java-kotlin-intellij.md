@@ -21,6 +21,28 @@ Adding Java classes to a Kotlin project is pretty straightforward. All you need 
 
 If you already have the Java classes, you can just copy them to the project directories.
 
+Kotlin sources can be stored with Java sources in the same folder, or placed to different folders. The default convention is using different folders:
+
+```
+project
+    - src
+        - main (root)
+            - kotlin
+            - java
+```
+
+The corresponding sourceSets property should be updated (build.gradle.kts) if your are not using the default convention:
+
+```
+sourceSets {
+    main.kotlin.srcDirs += 'src/main/myKotlin'
+    main.java.srcDirs += 'src/main/myJava'
+}
+sourceSets.main {
+    java.srcDirs("src/main/myJava", "src/main/myKotlin")
+}
+```
+
 You can now consume the Java сlass from Kotlin or vice versa without any further actions.
  
 For example, adding the following Java class:
